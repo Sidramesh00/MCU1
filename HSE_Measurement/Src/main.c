@@ -39,7 +39,7 @@ int main(void)
 	*pRCCCrReg |= (1<<16);
 
 	//2. Wait until HSE clock from the external crystal stabilizes (only if crystal is connected )
-	while( ! (*pRCCCrReg & ( 1 << 17) ) );
+	while( ! (*pRCCCrReg & ( 1 << 17) ) );// polling will be there untill 17th bit of RCC_CFGR_REG set by the hardware.
 
 	uint32_t *pRCCCfgrReg = (uint32_t*)RCC_CFGR_REG_ADDR;
 	//3. Switch the system clock to HSE (RCC_CFGR)
